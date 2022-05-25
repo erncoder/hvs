@@ -1,12 +1,12 @@
-defmodule Hvs.UsersTest do
-  use Hvs.DataCase
+defmodule HVS.UsersTest do
+  use HVS.DataCase
 
-  alias Hvs.Users
+  alias HVS.Users
 
   describe "users" do
-    alias Hvs.Users.User
+    alias HVS.Users.User
 
-    import Hvs.UsersFixtures
+    import HVS.UsersFixtures
 
     @invalid_attrs %{email: nil, first_name: nil, last_name: nil, mins_balance: nil}
 

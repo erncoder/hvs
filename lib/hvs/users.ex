@@ -1,12 +1,12 @@
-defmodule Hvs.Users do
+defmodule HVS.Users do
   @moduledoc """
   The Users context.
   """
 
   import Ecto.Query, warn: false
-  alias Hvs.Repo
+  alias HVS.Repo
 
-  alias Hvs.Users.User
+  alias HVS.Users.User
 
   @doc """
   Returns the list of users.
@@ -22,7 +22,8 @@ defmodule Hvs.Users do
   end
 
   @doc """
-  Gets a single user.
+  Gets a single user. Giving `:preload` as the second argument preloads all the
+  visits for that user.
 
   Raises `Ecto.NoResultsError` if the User does not exist.
 
@@ -35,7 +36,9 @@ defmodule Hvs.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id, preload \\ :no_preload)
+  def get_user!(id, :preload), do: Repo.get!(User, id) |> Repo.preload([:visits_as_member, :visits_as_pal])
+  def get_user!(id, _), do: Repo.get!(User, id)
 
   @doc """
   Creates a user.

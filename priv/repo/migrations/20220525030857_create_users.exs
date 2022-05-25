@@ -1,4 +1,4 @@
-defmodule Hvs.Repo.Migrations.CreateUsers do
+defmodule HVS.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

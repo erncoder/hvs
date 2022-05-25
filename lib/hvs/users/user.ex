@@ -1,12 +1,17 @@
-defmodule Hvs.Users.User do
+defmodule HVS.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias HVS.Visits.Visit
+
   schema "users" do
-    field :email, :string
     field :first_name, :string
     field :last_name, :string
+    field :email, :string
     field :mins_balance, :integer
+
+    has_many(:visits_as_member, Visit, foreign_key: :member)
+    has_many(:visits_as_pal, Visit, foreign_key: :pal)
 
     timestamps()
   end

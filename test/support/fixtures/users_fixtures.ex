@@ -1,7 +1,7 @@
-defmodule Hvs.UsersFixtures do
+defmodule HVS.UsersFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Hvs.Users` context.
+  entities via the `HVS.Users` context.
   """
 
   @doc """
@@ -16,7 +16,7 @@ defmodule Hvs.UsersFixtures do
         last_name: "some last_name",
         mins_balance: 42
       })
-      |> Hvs.Users.create_user()
+      |> HVS.Users.create_user()
 
     user
   end
