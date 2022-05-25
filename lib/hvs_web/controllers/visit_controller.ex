@@ -52,7 +52,7 @@ defmodule HVSWeb.VisitController do
     changesets = [member_cs, pal_cs, visit_cs]
 
     with {:valid?, true} <- {:valid?, Enum.all?(changesets, fn cs -> cs.valid? end)},
-         {:insert, :ok} <- {:insert, multi_upsert(changesets)} do
+         {:insert, {:ok, _records}} <- {:insert, multi_upsert(changesets)} do
       conn |> put_status(201)
     else
       {stage, resp} ->
