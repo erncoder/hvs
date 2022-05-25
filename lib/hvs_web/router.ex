@@ -1,11 +1,11 @@
-defmodule HvsWeb.Router do
-  use HvsWeb, :router
+defmodule HVSWeb.Router do
+  use HVSWeb, :router
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/api", HvsWeb do
+  scope "/api", HVSWeb do
     pipe_through :api
   end
 
@@ -22,7 +22,7 @@ defmodule HvsWeb.Router do
     scope "/" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
-      live_dashboard "/dashboard", metrics: HvsWeb.Telemetry
+      live_dashboard "/dashboard", metrics: HVSWeb.Telemetry
     end
   end
 end

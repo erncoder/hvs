@@ -1,4 +1,4 @@
-defmodule HvsWeb.Telemetry do
+defmodule HVSWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -65,7 +65,7 @@ defmodule HvsWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {HvsWeb, :count_users, []}
+      # {HVSWeb, :count_users, []}
     ]
   end
 end

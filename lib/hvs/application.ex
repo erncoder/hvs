@@ -1,4 +1,4 @@
-defmodule Hvs.Application do
+defmodule HVS.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,20 +9,20 @@ defmodule Hvs.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Hvs.Repo,
+      HVS.Repo,
       # Start the Telemetry supervisor
-      HvsWeb.Telemetry,
+      HVSWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Hvs.PubSub},
+      {Phoenix.PubSub, name: HVS.PubSub},
       # Start the Endpoint (http/https)
-      HvsWeb.Endpoint
-      # Start a worker by calling: Hvs.Worker.start_link(arg)
-      # {Hvs.Worker, arg}
+      HVSWeb.Endpoint
+      # Start a worker by calling: HVS.Worker.start_link(arg)
+      # {HVS.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Hvs.Supervisor]
+    opts = [strategy: :one_for_one, name: HVS.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule Hvs.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    HvsWeb.Endpoint.config_change(changed, removed)
+    HVSWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

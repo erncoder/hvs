@@ -1,4 +1,4 @@
-defmodule HvsWeb.ConnCase do
+defmodule HVSWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule HvsWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use HvsWeb.ConnCase, async: true`, although
+  by setting `use HVSWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule HvsWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import HvsWeb.ConnCase
+      import HVSWeb.ConnCase
 
-      alias HvsWeb.Router.Helpers, as: Routes
+      alias HVSWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint HvsWeb.Endpoint
+      @endpoint HVSWeb.Endpoint
     end
   end
 
   setup tags do
-    Hvs.DataCase.setup_sandbox(tags)
+    HVS.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

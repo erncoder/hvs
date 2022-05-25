@@ -8,13 +8,13 @@
 import Config
 
 config :hvs,
-  ecto_repos: [Hvs.Repo]
+  ecto_repos: [HVS.Repo]
 
 # Configures the endpoint
-config :hvs, HvsWeb.Endpoint,
+config :hvs, HVSWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: HvsWeb.ErrorView, accepts: ~w(json), layout: false],
-  pubsub_server: Hvs.PubSub,
+  render_errors: [view: HVSWeb.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: HVS.PubSub,
   live_view: [signing_salt: "KGnRBbj3"]
 
 # Configures Elixir's Logger

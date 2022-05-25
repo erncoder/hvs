@@ -1,12 +1,12 @@
-defmodule HvsWeb do
+defmodule HVSWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use HvsWeb, :controller
-      use HvsWeb, :view
+      use HVSWeb, :controller
+      use HVSWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule HvsWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: HvsWeb
+      use Phoenix.Controller, namespace: HVSWeb
 
       import Plug.Conn
-      import HvsWeb.Gettext
-      alias HvsWeb.Router.Helpers, as: Routes
+      import HVSWeb.Gettext
+      alias HVSWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -31,7 +31,7 @@ defmodule HvsWeb do
     quote do
       use Phoenix.View,
         root: "lib/hvs_web/templates",
-        namespace: HvsWeb
+        namespace: HVSWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -54,7 +54,7 @@ defmodule HvsWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import HvsWeb.Gettext
+      import HVSWeb.Gettext
     end
   end
 
@@ -63,9 +63,9 @@ defmodule HvsWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import HvsWeb.ErrorHelpers
-      import HvsWeb.Gettext
-      alias HvsWeb.Router.Helpers, as: Routes
+      import HVSWeb.ErrorHelpers
+      import HVSWeb.Gettext
+      alias HVSWeb.Router.Helpers, as: Routes
     end
   end
 

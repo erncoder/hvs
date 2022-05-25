@@ -1,4 +1,4 @@
-defmodule Hvs.MixProject do
+defmodule HVS.MixProject do
   use Mix.Project
 
   def project do
@@ -19,7 +19,7 @@ defmodule Hvs.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Hvs.Application, []},
+      mod: {HVS.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

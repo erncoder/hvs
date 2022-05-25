@@ -1,4 +1,4 @@
-defmodule HvsWeb.Endpoint do
+defmodule HVSWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hvs
 
   # The session will be stored in the cookie and signed,
@@ -44,5 +44,5 @@ defmodule HvsWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug HvsWeb.Router
+  plug HVSWeb.Router
 end

@@ -1,5 +1,5 @@
-defmodule HvsWeb.ErrorView do
-  use HvsWeb, :view
+defmodule HVSWeb.ErrorView do
+  use HVSWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
