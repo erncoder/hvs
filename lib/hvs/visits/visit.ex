@@ -1,7 +1,10 @@
 defmodule HVS.Visits.Visit do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, except: [:__meta__]}
   schema "visits" do
     field :member, :id
     field :date, :utc_datetime

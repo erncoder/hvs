@@ -8,6 +8,7 @@
 import Config
 
 config :hvs,
+  api_key: System.get_env("HVS_API_KEY", "default-hvs-api-key"),
   ecto_repos: [HVS.Repo]
 
 # Configures the endpoint

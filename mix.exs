@@ -3,14 +3,22 @@ defmodule HVS.MixProject do
 
   def project do
     [
+      aliases: aliases(),
       app: :hvs,
-      version: "0.1.0",
+      compilers: [:gettext] ++ Mix.compilers(),
+      deps: deps(),
       elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        check: :test
+      ],
       start_permanent: Mix.env() == :prod,
-      aliases: aliases(),
-      deps: deps()
+      test_coverage: [tool: ExCoveralls],
+      version: "0.1.0"
     ]
   end
 
@@ -33,16 +41,20 @@ defmodule HVS.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.9"},
-      {:phoenix_ecto, "~> 4.4"},
+      {:credo, "~> 1.6", [only: [:dev, :test], runtime: false]},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_dashboard, "~> 0.6"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
+      {:excoveralls, "~> 0.14.5", only: [:dev, :test]},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:phoenix, "~> 1.6.9"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:phoenix_live_dashboard, "~> 0.6"},
+      {:plug_cowboy, "~> 2.5"},
+      {:postgrex, ">= 0.0.0"},
+      {:sobelow, "~> 0.11.1", only: [:dev, :test]},
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"}
     ]
   end
 
@@ -54,9 +66,11 @@ defmodule HVS.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup"],
+      check: ["credo", "sobelow", "coveralls"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "phx.routes": "phx.routes HVSWeb.Router",
+      setup: ["deps.get", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end

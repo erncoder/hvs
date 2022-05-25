@@ -1,12 +1,22 @@
 defmodule HVSWeb.Router do
   use HVSWeb, :router
 
+  alias HVSWeb.Plugs
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug Plugs.Authz, :api
   end
 
   scope "/api", HVSWeb do
     pipe_through :api
+
+    get "/check", APIController, :check_access
+
+    resources "/users", UserController, only: [:create, :show, :index]
+
+    resources "/visits", VisitController, only: [:create, :show, :index]
+    post "/visits/:visit_id/fulfill", VisitController, :fulfill_visit
   end
 
   # Enables LiveDashboard only for development
