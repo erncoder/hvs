@@ -8,10 +8,18 @@ defmodule HVS.VisitsFixtures do
   Generate a visit.
   """
   def visit_fixture(attrs \\ %{}) do
+    {:ok, %HVS.Users.User{id: id}} = HVS.Users.create_user(%{
+      first_name: "first",
+      last_name: "last",
+      email: "email",
+      mins_balance: "30"
+    })
+
     {:ok, visit} =
       attrs
       |> Enum.into(%{
-        date: ~U[2022-05-24 03:39:00Z],
+        member: id,
+        date: DateTime.utc_now(),
         minutes: 42,
         tasks: "some tasks"
       })

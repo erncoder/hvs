@@ -23,7 +23,7 @@ defmodule HVS.VisitsTest do
     test "create_visit/1 with valid data creates a visit" do
       valid_attrs = %{date: ~U[2022-05-24 03:39:00Z], minutes: 42, tasks: "some tasks"}
 
-      assert {:ok, %Visit{} = visit} = Visits.create_visit(valid_attrs)
+      visit = visit_fixture(valid_attrs)
       assert visit.date == ~U[2022-05-24 03:39:00Z]
       assert visit.minutes == 42
       assert visit.tasks == "some tasks"
