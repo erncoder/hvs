@@ -37,8 +37,13 @@ defmodule HVS.Users do
 
   """
   def get_user!(id, preload \\ :no_preload)
-  def get_user!(id, :preload), do: Repo.get!(User, id) |> Repo.preload([:visits_as_member, :visits_as_pal])
+
+  def get_user!(id, :preload),
+    do: Repo.get!(User, id) |> Repo.preload([:visits_as_member, :visits_as_pal])
+
   def get_user!(id, _), do: Repo.get!(User, id)
+
+  def get_user(id), do: Repo.get(User, id)
 
   @doc """
   Creates a user.

@@ -14,7 +14,7 @@ defmodule HVS.UsersFixtures do
         email: "some email",
         first_name: "some first_name",
         last_name: "some last_name",
-        mins_balance: 42
+        mins_balance: Enum.random(1..10000)
       })
       |> HVS.Users.create_user()
 

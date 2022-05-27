@@ -14,9 +14,10 @@ defmodule HVSWeb.Router do
     get "/check", APIController, :check_access
 
     resources "/users", UserController, only: [:create, :show, :index]
-
     resources "/visits", VisitController, only: [:create, :show, :index]
-    post "/visits/:visit_id/fulfill", VisitController, :fulfill_visit
+
+    post "/users/:user_id/request", VisitController, :request
+    post "/visits/:visit_id/fulfill", VisitController, :fulfill
   end
 
   # Enables LiveDashboard only for development

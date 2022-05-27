@@ -37,6 +37,8 @@ defmodule HVS.Visits do
   """
   def get_visit!(id), do: Repo.get!(Visit, id)
 
+  def get_visit(id), do: Repo.get(Visit, id)
+
   @doc """
   Creates a visit.
 
